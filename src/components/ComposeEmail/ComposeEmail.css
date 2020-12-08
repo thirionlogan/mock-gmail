@@ -6,3 +6,8 @@ form {
 .errorMessage {
   color: red;
 }
+
+.composeEmailform label,
+.composeEmailform textarea {
+  margin-top: 8px;
+}

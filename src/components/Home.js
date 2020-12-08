@@ -31,6 +31,7 @@ const Home = ({ handleSetSelectedEmail, searchCriteria, selectedEmailId }) => {
                 handleSetSelectedEmail(email.id);
               }}
               key={`email ${email.id}`}
+              className='emailItem'
             >{`Sender: ${email.sender} Subject: ${email.subject}`}</div>
           );
         })}

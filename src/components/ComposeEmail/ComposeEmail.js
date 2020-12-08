@@ -42,7 +42,7 @@ const ComposeEmail = () => {
   return (
     <>
       {redirectToHome ? <Redirect to='/' /> : null}
-      <form onSubmit={handleSend}>
+      <form onSubmit={handleSend} className='composeEmailform'>
         <label>
           To:
           <input

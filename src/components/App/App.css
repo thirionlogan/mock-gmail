@@ -9,6 +9,7 @@
   padding: 8px 3% 8px 3%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .App-header nav {
@@ -41,4 +42,9 @@
   justify-content: center;
   height: 100%;
   width: 100vw;
+}
+
+.emailItem {
+  margin-top: 8px;
+  cursor: pointer;
 }
