@@ -1,6 +1,7 @@
+import { Redirect } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const Home = ({ handleSetSelectedEmail, searchCriteria }) => {
+const Home = ({ handleSetSelectedEmail, searchCriteria, selectedEmailId }) => {
   const [emails, setEmails] = useState([]);
 
   useEffect(() => {
@@ -11,6 +12,7 @@ const Home = ({ handleSetSelectedEmail, searchCriteria }) => {
 
   return (
     <>
+      {selectedEmailId ? <Redirect to='/emailDetails' /> : null}
       {emails
         .filter((email) => {
           if (!searchCriteria) return true;
