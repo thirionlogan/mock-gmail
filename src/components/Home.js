@@ -23,6 +23,7 @@ const Home = ({ handleSetSelectedEmail, searchCriteria, selectedEmailId }) => {
             email.sender.toLowerCase().includes(searchCriteria.toLowerCase())
           );
         })
+        .sort((emailA, emailB) => (emailA.date < emailB.date ? 1 : -1))
         .map((email) => {
           return (
             <div
