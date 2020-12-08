@@ -19,6 +19,29 @@ app.get('/emails/:id', (req, res) => {
   );
 });
 
+app.delete('/emails/:id', (req, res) => {
+  let result;
+  try {
+    emails.splice(
+      emails.indexof(
+        emails.find((element) => element.id === parseInt(req.params.id))
+      ),
+      1
+    );
+    result = {
+      status: 'success',
+      message: 'The message was successfully deleted',
+    };
+  } catch {
+    result = {
+      status: 'failed',
+      message: 'The message deleted',
+    };
+    res.status(400);
+  }
+  res.json(result);
+});
+
 app.get('/search', (req, res) => {
   const query = decodeURIComponent(req.query.query);
   const filteredEmails = emails.filter((email) =>
