@@ -1,0 +1,36 @@
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+  color: white;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 8px 3% 8px 3%;
+}
+
+.App-header nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.App-header .App-Link {
+  color: white;
+}
+
+.App-header .App-Link:visited {
+  color: white;
+}
+
+.App-header .App-Link:not(:first-child) {
+  margin-left: 36px;
+}
+
+.App-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100vw;
+}
