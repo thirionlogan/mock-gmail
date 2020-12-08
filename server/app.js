@@ -23,7 +23,7 @@ app.delete('/emails/:id', (req, res) => {
   let result;
   try {
     emails.splice(
-      emails.indexof(
+      emails.indexOf(
         emails.find((element) => element.id === parseInt(req.params.id))
       ),
       1
