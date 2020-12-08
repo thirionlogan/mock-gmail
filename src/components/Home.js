@@ -14,9 +14,12 @@ const Home = ({ handleSetSelectedEmail, searchCriteria }) => {
       {emails
         .filter((email) => {
           if (!searchCriteria) return true;
-          return email.subject
-            .toLowerCase()
-            .includes(searchCriteria.toLowerCase());
+          return (
+            email.subject
+              .toLowerCase()
+              .includes(searchCriteria.toLowerCase()) ||
+            email.sender.toLowerCase().includes(searchCriteria.toLowerCase())
+          );
         })
         .map((email) => {
           return (
