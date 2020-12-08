@@ -25,7 +25,10 @@ function App() {
         <main className='App-main'>
           <Switch>
             <Route path='/emailDetails'>
-              <EmailDetails selectedEmailId={selectedEmailId} />
+              <EmailDetails
+                selectedEmailId={selectedEmailId}
+                handleSetSelectedEmail={handleSetSelectedEmail}
+              />
             </Route>
             <Route path='/compose'>
               <ComposeEmail />

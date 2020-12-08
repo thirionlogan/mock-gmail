@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-const EmailDetails = ({ selectedEmailId }) => {
-  const [email, setEmail] = useState({});
-  const [emailDeleted, setEmaildeleted] = useState(false);
+const EmailDetails = ({ selectedEmailId, handleSetSelectedEmail }) => {
+  const [email, setEmail] = useState(undefined);
 
   useEffect(() => {
     fetch(`http://localhost:3001/emails/${selectedEmailId}`)
@@ -18,12 +17,13 @@ const EmailDetails = ({ selectedEmailId }) => {
       },
     })
       .then((response) => response.json())
-      .then((data) => setEmaildeleted(data.status === 'success'));
+      .then((data) => {
+        if (data.status === 'success') handleSetSelectedEmail('');
+      });
   };
-
   return (
     <>
-      {!selectedEmailId || emailDeleted ? <Redirect to='/' /> : null}
+      {!selectedEmailId ? <Redirect to='/' /> : null}
       {email ? (
         <div>
           <p>{`From: ${email.sender}`}</p>
