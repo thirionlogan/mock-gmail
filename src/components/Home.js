@@ -17,6 +17,7 @@ const Home = ({ handleSetSelectedEmail }) => {
             onClick={() => {
               handleSetSelectedEmail(email.id);
             }}
+            key={`email ${email.id}`}
           >{`Sender: ${email.sender} Subject: ${email.subject}`}</div>
         );
       })}
