@@ -13,7 +13,11 @@ app.use(bodyParser.json());
 const emails = JSON.parse(fs.readFileSync(path.join('server', 'emails.json')));
 
 app.get('/emails', (req, res) => res.json(emails));
-app.get('/emails/:id', (req, res) => res.send(emails[req.params.id]));
+app.get('/emails/:id', (req, res) => {
+  res.send(
+    emails.find((element) => element.id === parseInt(req.params.id, 10))
+  );
+});
 
 app.get('/search', (req, res) => {
   const query = decodeURIComponent(req.query.query);
