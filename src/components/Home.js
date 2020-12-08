@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const Home = ({ handleSetSelectedEmail }) => {
+const Home = ({ handleSetSelectedEmail, searchCriteria }) => {
   const [emails, setEmails] = useState([]);
 
   useEffect(() => {
@@ -11,16 +11,23 @@ const Home = ({ handleSetSelectedEmail }) => {
 
   return (
     <>
-      {emails.map((email) => {
-        return (
-          <div
-            onClick={() => {
-              handleSetSelectedEmail(email.id);
-            }}
-            key={`email ${email.id}`}
-          >{`Sender: ${email.sender} Subject: ${email.subject}`}</div>
-        );
-      })}
+      {emails
+        .filter((email) => {
+          if (!searchCriteria) return true;
+          return email.subject
+            .toLowerCase()
+            .includes(searchCriteria.toLowerCase());
+        })
+        .map((email) => {
+          return (
+            <div
+              onClick={() => {
+                handleSetSelectedEmail(email.id);
+              }}
+              key={`email ${email.id}`}
+            >{`Sender: ${email.sender} Subject: ${email.subject}`}</div>
+          );
+        })}
     </>
   );
 };

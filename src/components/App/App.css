@@ -7,11 +7,18 @@
 .App-header {
   background-color: #282c34;
   padding: 8px 3% 8px 3%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .App-header nav {
   display: flex;
   flex-direction: row;
+}
+.App-header form {
+  display: flex;
+  flex-direction: row;
+  height: 1.5em;
 }
 
 .App-header .App-Link {
