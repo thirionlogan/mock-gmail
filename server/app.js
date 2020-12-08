@@ -35,7 +35,7 @@ app.delete('/emails/:id', (req, res) => {
   } catch {
     result = {
       status: 'failed',
-      message: 'The message deleted',
+      message: 'The message was not deleted',
     };
     res.status(400);
   }
