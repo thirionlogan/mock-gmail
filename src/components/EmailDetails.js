@@ -4,13 +4,13 @@ const EmailDetails = ({ selectedEmailId, handleSetSelectedEmail }) => {
   const [email, setEmail] = useState(undefined);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/emails/${selectedEmailId}`)
+    fetch(`http://localhost:3000/api/emails/${selectedEmailId}`)
       .then((response) => response.json())
       .then((data) => setEmail(data));
   }, [selectedEmailId]);
 
   const deleteEmail = () => {
-    fetch(`http://localhost:3001/api/emails/${selectedEmailId}`, {
+    fetch(`http://localhost:3000/api/emails/${selectedEmailId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

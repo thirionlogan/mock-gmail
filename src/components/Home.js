@@ -8,7 +8,7 @@ const Home = ({ handleSetSelectedEmail, searchCriteria, selectedEmailId }) => {
     fetch('http://localhost:3000/api/emails')
       .then((response) => response.json())
       .then((data) => setEmails(data));
-  });
+  }, []);
 
   return (
     <>
