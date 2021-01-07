@@ -5,21 +5,27 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(bodyParser.json());
 
 const emails = JSON.parse(fs.readFileSync(path.join('server', 'emails.json')));
 
-app.get('/emails', (req, res) => res.json(emails));
-app.get('/emails/:id', (req, res) => {
+app.use(express.static(path.resolve('./build')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve('./build', 'index.html'));
+});
+
+app.get('/api/emails', (req, res) => res.json(emails));
+app.get('/api/emails/:id', (req, res) => {
   res.send(
     emails.find((element) => element.id === parseInt(req.params.id, 10))
   );
 });
 
-app.delete('/emails/:id', (req, res) => {
+app.delete('/api/emails/:id', (req, res) => {
   let result;
   try {
     emails.splice(
@@ -42,7 +48,7 @@ app.delete('/emails/:id', (req, res) => {
   res.json(result);
 });
 
-app.get('/search', (req, res) => {
+app.get('/api/search', (req, res) => {
   const query = decodeURIComponent(req.query.query);
   const filteredEmails = emails.filter((email) =>
     email.subject.includes(query)
@@ -51,7 +57,7 @@ app.get('/search', (req, res) => {
   res.send(filteredEmails);
 });
 
-app.post('/send', function (req, res) {
+app.post('/api/send', function (req, res) {
   let result;
   const emailSender = req.body;
   if (

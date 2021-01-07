@@ -5,7 +5,7 @@ const Home = ({ handleSetSelectedEmail, searchCriteria, selectedEmailId }) => {
   const [emails, setEmails] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/emails')
+    fetch('http://localhost:3000/api/emails')
       .then((response) => response.json())
       .then((data) => setEmails(data));
   });

@@ -14,7 +14,7 @@ const ComposeEmail = () => {
 
   const handleSend = (event) => {
     event.preventDefault();
-    fetch('http://localhost:3001/send', {
+    fetch('http://localhost:3000/api/send', {
       method: 'POST',
       body: JSON.stringify({ sender, recipient, subject, message }),
       headers: {
